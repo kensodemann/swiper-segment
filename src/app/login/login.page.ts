@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { App, AppState } from '@capacitor/app';
 import { LoadingController } from '@ionic/angular';
 
@@ -7,15 +7,12 @@ import { LoadingController } from '@ionic/angular';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
-
+export class LoginPage {
   lastActiveStatus: boolean = false;
   public isLoading = false;
   public isIosDevice = true;
 
-  constructor(
-    private loadingController: LoadingController,
-  ) { 
+  constructor(private loadingController: LoadingController) {
     void App.addListener('appStateChange', (state: AppState) => {
       if (state.isActive) {
         void this.present();
@@ -26,16 +23,13 @@ export class LoginPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
   async present() {
-    const activeLoader: any =  await this.loadingController.getTop();
+    const activeLoader: any = await this.loadingController.getTop();
     if (!activeLoader && !this.isLoading) {
       this.isLoading = true;
       const loadingElement = await this.loadingController.create({
         cssClass: 'custom-loading',
-        spinner: this.isIosDevice ? 'lines-sharp' : 'crescent'
+        spinner: this.isIosDevice ? 'lines-sharp' : 'crescent',
       });
       await loadingElement.present();
     } else {
@@ -44,15 +38,14 @@ export class LoginPage implements OnInit {
 
   async dismiss(): Promise<any> {
     try {
-        const activeLoader: any = await this.loadingController.getTop();
-        if (activeLoader && activeLoader.clientHeight && this.isLoading) {
-          this.isLoading = false;
-          await activeLoader.dismiss();
-          return true;
-        }
+      const activeLoader: any = await this.loadingController.getTop();
+      if (activeLoader && activeLoader.clientHeight && this.isLoading) {
+        this.isLoading = false;
+        await activeLoader.dismiss();
+        return true;
+      }
     } catch (e: any) {
       return e;
     }
   }
-
 }

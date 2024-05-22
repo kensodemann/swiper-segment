@@ -11,12 +11,7 @@ import { WhatsCoveredComponent } from '../whats-covered/whats-covered/whats-cove
 import { ExpandableComponent } from '../expandable/expandable/expandable.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    MedicalPageRoutingModule
-  ],
+  imports: [CommonModule, FormsModule, IonicModule, MedicalPageRoutingModule],
   declarations: [MedicalPage, WhatsCoveredComponent, ExpandableComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

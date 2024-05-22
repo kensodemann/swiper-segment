@@ -5,12 +5,7 @@
   <ion-grid>
     <ion-row class="tab_wrap">
       <ion-segment mode="md" [(ngModel)]="selectedTab" (ionChange)="segmentChange($event)" scrollable>
-        <ion-segment-button
-          mode="md"
-          *ngFor="let tab of tabList"
-          [id]="tab.id"
-          [value]="tab.index"
-        >
+        <ion-segment-button mode="md" *ngFor="let tab of tabList" [id]="tab.id" [value]="tab.index">
           <ion-label class="nue">{{tab.text}}</ion-label>
         </ion-segment-button>
       </ion-segment>
@@ -19,17 +14,16 @@
 </ion-header>
 
 <ion-content>
-  <swiper-container auto-height="true" #swiper [modules]="swiperModules"
+  <swiper-container
+    auto-height="true"
+    #swiper
+    [modules]="swiperModules"
     (slidechangetransitionstart)="slideChange()"
-    (slidechangetransitionend)="slideChangeCompleted()">
-    
-    <swiper-slide>
-      Silde 1
-    </swiper-slide>
+    (slidechangetransitionend)="slideChangeCompleted()"
+  >
+    <swiper-slide> Silde 1 </swiper-slide>
 
-    <swiper-slide>
-      Slide 2
-    </swiper-slide>
+    <swiper-slide> Slide 2 </swiper-slide>
 
     <swiper-slide>
       Slide 3
@@ -38,13 +32,8 @@
       </ion-list>
     </swiper-slide>
 
-    <swiper-slide>
-      Slide 4
-    </swiper-slide>
+    <swiper-slide> Slide 4 </swiper-slide>
 
-    <swiper-slide>
-      Slide 5
-    </swiper-slide>
-
+    <swiper-slide> Slide 5 </swiper-slide>
   </swiper-container>
 </ion-content>

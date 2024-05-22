@@ -9,8 +9,8 @@ describe('ExpandableComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExpandableComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [ExpandableComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ExpandableComponent);

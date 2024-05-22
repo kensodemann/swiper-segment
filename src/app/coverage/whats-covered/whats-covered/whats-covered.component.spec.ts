@@ -9,8 +9,8 @@ describe('WhatsCoveredComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ WhatsCoveredComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [WhatsCoveredComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(WhatsCoveredComponent);

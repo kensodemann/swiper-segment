@@ -5,30 +5,28 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then((m) => m.LoginPageModule),
   },
   {
     path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    loadChildren: () => import('./folder/folder.module').then((m) => m.FolderPageModule),
   },
   {
     path: 'medical',
-    loadChildren: () => import('./coverage/medical/medical.module').then( m => m.MedicalPageModule)
+    loadChildren: () => import('./coverage/medical/medical.module').then((m) => m.MedicalPageModule),
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  }
+    loadChildren: () => import('./login/login.module').then((m) => m.LoginPageModule),
+  },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

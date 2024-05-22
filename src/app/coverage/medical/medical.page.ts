@@ -7,7 +7,6 @@ import { IonicSlides } from '@ionic/angular';
   styleUrls: ['./medical.page.scss'],
 })
 export class MedicalPage implements OnInit {
-
   @ViewChild('swiper')
   public swiperModules = [IonicSlides];
   public hasSlideChanged = 0;
@@ -16,27 +15,27 @@ export class MedicalPage implements OnInit {
     {
       id: 'slide1',
       text: 'slide 1',
-      index: 0
+      index: 0,
     },
     {
       id: 'slide2',
       text: 'slide 2',
-      index: 1
+      index: 1,
     },
     {
       id: 'slide3',
       text: 'slide 3',
-      index: 2
+      index: 2,
     },
     {
       id: 'slide4',
       text: 'slide 4',
-      index: 3
+      index: 3,
     },
     {
       id: 'slide5',
       text: 'slide 5',
-      index: 4
+      index: 4,
     },
   ];
   private swiperInstance: any;
@@ -45,7 +44,7 @@ export class MedicalPage implements OnInit {
   constructor(
     private elementRef: ElementRef,
     private zone: NgZone,
-  ) { }
+  ) {}
 
   @ViewChild('swiper')
   set swiper(swiperRef: ElementRef) {
@@ -77,22 +76,18 @@ export class MedicalPage implements OnInit {
     }
     if (value !== String(2)) {
       this.swiperInstance?.slideTo(event.detail.value);
-      this.selectedSegmentInfo = this.tabList.find(
-        t => t.index.toString() === value
-      );
+      this.selectedSegmentInfo = this.tabList.find((t) => t.index.toString() === value);
       this.updateSegmentChange();
     }
   }
 
   updateSegmentChange() {
     if (this.selectedSegmentInfo) {
-      const selectedSegment = this.elementRef.nativeElement.querySelector(
-        '#' + this.selectedSegmentInfo.id
-      );
+      const selectedSegment = this.elementRef.nativeElement.querySelector('#' + this.selectedSegmentInfo.id);
       selectedSegment.scrollIntoView({
         behavior: 'smooth',
         block: 'nearest',
-        inline: 'center'
+        inline: 'center',
       });
     }
   }
@@ -115,5 +110,4 @@ export class MedicalPage implements OnInit {
     //   this.hasSlideChanged = 2;
     // });
   }
-
 }
