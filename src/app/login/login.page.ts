@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { App, AppState } from '@capacitor/app';
 import { LoadingController } from '@ionic/angular';
 
@@ -10,16 +10,31 @@ import { LoadingController } from '@ionic/angular';
 export class LoginPage {
   lastActiveStatus: boolean = false;
   public isLoading = false;
+  public showSpinner = false;
   public isIosDevice = true;
+  password: string = '';
 
-  constructor(private loadingController: LoadingController) {
-    void App.addListener('appStateChange', (state: AppState) => {
+  constructor(
+    zone: NgZone,
+    private loadingController: LoadingController,
+  ) {
+    void App.addListener('appStateChange', async (state: AppState) => {
       if (state.isActive) {
-        void this.present();
-        setTimeout(() => {
-          void this.dismiss();
-        }, 5000);
+        await zone.run(() => this.fiveSecondLoading());
       }
+    });
+  }
+
+  fiveSecondLoading(): Promise<void> {
+    return new Promise<void>((resolve) => {
+      this.showSpinner = true;
+      // this.present();
+      setTimeout(() => {
+        console.log('5 seconds passed', this.password);
+        this.showSpinner = false;
+        // this.dismiss();
+        resolve();
+      }, 5000);
     });
   }
 
@@ -32,7 +47,6 @@ export class LoginPage {
         spinner: this.isIosDevice ? 'lines-sharp' : 'crescent',
       });
       await loadingElement.present();
-    } else {
     }
   }
 
